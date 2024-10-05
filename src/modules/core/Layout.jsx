@@ -1,9 +1,10 @@
 
 import React, { useState } from "react"; // Add useState import
 import { Canvas } from "@react-three/fiber";
-import { Sun } from "../sol/Sol";
-import { Planet } from "../planeta/Planet";
-import { Lights } from "../luces/Lights";
+import { Sun } from "@modules/sol/Sol";
+import { Planet } from "@modules/planeta/Planet";
+import { Lights } from "@modules/luces/Lights";
+import planetData from "@modules/planeta/planetData";
 import { OrbitControls } from "@react-three/drei";
 import planetData from "../planeta/planetData";
 import { Asteroid } from '../asteroides/Asteroid'; // Import Asteroid component
