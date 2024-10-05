@@ -6,7 +6,6 @@ import { Planet } from "@modules/planeta/Planet";
 import { Lights } from "@modules/luces/Lights";
 import planetData from "@modules/planeta/planetData";
 import { OrbitControls } from "@react-three/drei";
-import planetData from "../planeta/planetData";
 import { Asteroid } from '../asteroides/Asteroid'; // Import Asteroid component
 import { Rocket } from "../rocket/Rocket"; // Import Rocket component
 import './styles.css'
