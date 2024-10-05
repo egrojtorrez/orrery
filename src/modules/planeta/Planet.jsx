@@ -1,6 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { Ecliptic } from "../orbita/Ecliptic";
+import { Ecliptic } from "@modules/orbita/Ecliptic";
 
 export function Planet({ planet: { color, xRadius, zRadius, size } }) {
   const planetRef = useRef();
