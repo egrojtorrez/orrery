@@ -53,7 +53,10 @@ export const usePlanet = (planetData) => {
     const z = radialDistance * Math.sin(argPerigeeRad + trueAnomaly) * Math.sin(inclinationRad);
 
     planetRef.current.position.set(x, y, z);
-    planetRef.current.rotation.y += 0.001;
+    planetRef.current.rotation.x = 90;
+    planetRef.current.rotation.z = 0;
+
+    planetRef.current.rotation.y += 0.01; // Adjust the rotation speed as needed
   });
   return { planetRef, scene, onClick };
 }
