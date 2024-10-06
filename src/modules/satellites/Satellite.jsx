@@ -1,4 +1,4 @@
-import { useFrame } from "@react-three/fiber";
+/* import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { Ecliptic } from "../orbita/Ecliptic";
 
@@ -23,4 +23,4 @@ export function Satellite({ satellite: {planet, color, xRadius, zRadius, size} }
       <Ecliptic xRadius={xRadius} zRadius={zRadius} />
     </>
   );
-}
+} */

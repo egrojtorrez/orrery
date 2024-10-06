@@ -38,13 +38,15 @@ const planetData = [
   }
 ];
 const totalPlanets = 8;
+
 for (let index = 0; index < totalPlanets; index++) {
   planetData.push({
     id: index,
     color: randomColor(),
     xRadius: (index + 1.5) * 60,
     zRadius: (index + 1.5) * 45,
-    size: planetData[index]["Radius"]/5000
+    size: planetData[index]["Radius"]/(500*(index+1))
+    
   });
 }
 

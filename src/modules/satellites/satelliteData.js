@@ -1,4 +1,4 @@
-import { RGBFormat } from 'three';
+/* import { RGBFormat } from 'three';
 import { color } from 'three/webgpu';
 const random = (a, b) => a + Math.random() * b;
 const randomInt = (a, b) => Math.floor(random(a, b));
@@ -258,3 +258,4 @@ for (let index = 0; index < satelliteData.length; index++) {
 }
 
 export default satelliteData;
+ */
