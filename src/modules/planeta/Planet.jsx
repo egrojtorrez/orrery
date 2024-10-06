@@ -1,8 +1,8 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { Ecliptic } from "../orbita/Ecliptic";
-import { Satellite } from '../satellites/Satellite';
-import satelliteData from '../satellites/satelliteData';
+/* import { Satellite } from '../satellites/Satellite';
+import satelliteData from '../satellites/satelliteData'; */
 
 export function Planet({ planet: { color, xRadius, zRadius, size } }) {
   const planetRef = useRef();
