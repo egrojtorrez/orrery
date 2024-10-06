@@ -61,8 +61,8 @@ export function LayoutSolarSystem() {
         {isMobile ? (
           <Accordion variant="splitted" css={{ w: "150px" }}> {/* Accordion width for mobile */}
             <AccordionItem title="Controls">
-              <Button onClick={toggleRocketMode} color="danger" variant="light" className="w-full">
-                {isRocketMode ? "Switch to Normal Mode" : "Activate Rocket Mode"}
+            <Button onClick={() => SunClick()} color="primary"  className="w-full">
+                Focus sun
               </Button>
               <Button onClick={toggleAsteroids} color="primary" className="w-full">
                 {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
@@ -73,16 +73,16 @@ export function LayoutSolarSystem() {
               <Button onClick={toggleSize} color="primary" className="w-full">
                 {isRealisticSize ? "Switch to Scaled Sizes" : "Switch to Realistic Sizes"}
               </Button>
-              <Button onClick={() => SunClick()} color="primary"  className="w-full">
-                Focus sun
+              <Button onClick={toggleRocketMode} color="danger" variant="light" className="w-full">
+                {isRocketMode ? "Switch to Normal Mode" : "Activate Rocket Mode"}
               </Button>
-              
             </AccordionItem>
           </Accordion>
         ) : (
+          
           <div className="flex flex-col gap-2"> {/* Flex container for buttons */}
-          <Button onClick={toggleRocketMode} color="danger" variant="light" className="w-full">
-            {isRocketMode ? "Switch to Normal Mode" : "Activate Rocket Mode"}
+          <Button onClick={() => SunClick()} color="primary" className="w-full">
+            Focus sun
           </Button>
           <Button onClick={toggleAsteroids} color="primary" className="w-full">
             {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
@@ -93,8 +93,8 @@ export function LayoutSolarSystem() {
           <Button onClick={toggleSize} color="primary" className="w-full">
             {isRealisticSize ? "Switch to Scaled Sizes" : "Switch to Realistic Sizes"}
           </Button>
-          <Button onClick={() => SunClick()} color="primary" className="w-full">
-            Focus sun
+          <Button onClick={toggleRocketMode} color="danger" variant="light" className="w-full">
+            {isRocketMode ? "Switch to Normal Mode" : "Activate Rocket Mode"}
           </Button>
           
         </div>
