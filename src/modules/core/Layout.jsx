@@ -3,8 +3,10 @@ import React, { useState } from "react"; // Add useState import
 import { Canvas } from "@react-three/fiber";
 import { Sun } from "@modules/sol/Sol";
 import { Planet } from "@modules/planeta/Planet";
+import { SmallObjects } from "@modules/smallObjects/SmallObjects";
 import { Lights } from "@modules/luces/Lights";
 import planetData from "@modules/planeta/planetData";
+import smallObjectsData from "@modules/smallObjects/hooks/smallObjectsData";
 import { OrbitControls } from "@react-three/drei";
 import { Asteroid } from '../asteroides/Asteroid'; // Import Asteroid component
 import { Rocket } from "../rocket/Rocket"; // Import Rocket component
@@ -44,6 +46,11 @@ export function LayoutSolarSystem() {
         {planetData.map((planet) => (
           <Planet planet={planet} key={planet.id} />
         ))}
+
+        {smallObjectsData.map((smallObjects) => (
+          <SmallObjects smallObjects={smallObjects} key={smallObjects.id} />
+        ))}
+        
         <Lights />
         <OrbitControls />
         {isRocketMode && <Rocket/>}

@@ -26,7 +26,6 @@ export const usePlanet = (planetData) => {
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime() * speed_factor;
     var meanMotion = (2 * Math.PI) / (planetData.sidereal * 365.25);
-    
       // Calcular la anomalía media (Mean Anomaly, M)
     const meanAnomaly = THREE.MathUtils.degToRad(planetData.meanAnomoly) + meanMotion * t; // M = M0 + n * t
     
