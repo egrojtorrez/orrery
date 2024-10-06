@@ -24,7 +24,7 @@ const NUM_ASTEROIDS = 10;
 export function LayoutSolarSystem() {
   const [isRocketMode, setIsRocketMode] = useState(false);
   const [addAsteroids, setAddAsteroids] = useState(false);
-  const [paintEliptics, setEliptics] = useState(false);
+  const [paintEliptics, setEliptics] = useState(true);
   const controlsRef = useRef(); // Ref to store OrbitControls
  const { isRealisticSize, toggleSize } = useStore(); // Get the state and toggle function
  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
@@ -67,15 +67,16 @@ export function LayoutSolarSystem() {
               <Button onClick={toggleAsteroids} color="primary" className="w-full">
                 {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
               </Button>
+              <Button onClick={toggleEliptics} color="primary" className="w-full">
+              {paintEliptics ? "Turn off eliptics" : "Activate eliptics"}
+              </Button>
               <Button onClick={toggleSize} color="secondary" className="w-full">
                 {isRealisticSize ? "Switch to Scaled Sizes" : "Switch to Realistic Sizes"}
               </Button>
-              <Button onClick={() => SunClick()} color="danger" variant="light" className="absolute top-4 left-4 rounded z-10">
-                Volver al Sol
+              <Button onClick={() => SunClick()} color="danger" variant="light" className="w-full">
+                Focus sun
               </Button>
-              <Button onClick={toggleEliptics} color="primary" className="absolute bottom-16 left-4 rounded z-10">
-              {paintEliptics ? "Turn off eliptics" : "Activate eliptics"}
-            </Button>
+              
             </AccordionItem>
           </Accordion>
         ) : (
@@ -86,15 +87,16 @@ export function LayoutSolarSystem() {
           <Button onClick={toggleAsteroids} color="primary" className="w-full">
             {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
           </Button>
+          <Button onClick={toggleEliptics} color="primary" className="w-full">
+            {paintEliptics ? "Turn off eliptics" : "Activate eliptics"}
+          </Button>
           <Button onClick={toggleSize} color="secondary" className="w-full">
             {isRealisticSize ? "Switch to Scaled Sizes" : "Switch to Realistic Sizes"}
           </Button>
-          <Button onClick={() => SunClick()} color="danger" variant="light" className="absolute top-4 left-4 rounded z-10">
-            Volver al Sol
+          <Button onClick={() => SunClick()} color="danger" variant="light" className="w-full">
+            Focus sun
           </Button>
-          <Button onClick={toggleEliptics} color="primary" className="absolute bottom-16 left-4 rounded z-10">
-            {paintEliptics ? "Turn off eliptics" : "Activate eliptics"}
-          </Button>
+          
         </div>
         )}
       </div>

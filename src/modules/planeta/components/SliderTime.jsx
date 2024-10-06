@@ -13,7 +13,7 @@ export function SliderTime() {
       minValue={-24} 
       defaultValue={1}
       value={speed.floor}
-      getValue= {(value) => `${value} horas/s`}
+      getValue= {(value) => `${value} hours/s`}
       onChange={(value) => {
         setSpeed(value)
       }}
