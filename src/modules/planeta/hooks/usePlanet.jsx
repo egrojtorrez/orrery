@@ -5,10 +5,12 @@ import * as THREE from 'three';
 import { eccentricToTrueAnomaly, meanToEccentricAnomaly } from "../utils/funcionesOrbita";
 import { useStoreCard, useStoreDataCard } from "./planetCardStore";
 import { useStoreSlider } from "./sliderCardStore";
+import { useCameraTarget } from "@modules/camara/hooks/useCameraTarget";
 
 export const usePlanet = (planetData) => {
   const { scene } = useGLTF(planetData.modelUrl);
   const { speed } = useStoreSlider() 
+  const {followObject} = useCameraTarget()
   const speed_factor = planetData.speed_factor ?? speed ?? 40
   const planetRef = useRef();
 
@@ -16,6 +18,7 @@ export const usePlanet = (planetData) => {
   const {setData} = useStoreDataCard()
   
   const onClick = () => {
+    followObject(planetRef)
     onOpen()
     setData({
       title: planetData.name,
@@ -26,7 +29,6 @@ export const usePlanet = (planetData) => {
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime() * speed_factor;
     var meanMotion = (2 * Math.PI) / (planetData.sidereal * 365.25);
-    
       // Calcular la anomalía media (Mean Anomaly, M)
     const meanAnomaly = THREE.MathUtils.degToRad(planetData.meanAnomoly) + meanMotion * t; // M = M0 + n * t
     

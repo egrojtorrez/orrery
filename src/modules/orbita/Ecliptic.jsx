@@ -20,7 +20,7 @@ export function Ecliptic({ planeta }) {
   const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
   return (
     <line geometry={lineGeometry}>
-      <lineBasicMaterial attach="material" color="#BFBBDA" linewidth={10} />
+      <lineBasicMaterial attach="material" color={planeta.color} linewidth={10} />
     </line>
   );
 }
