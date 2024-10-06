@@ -37,7 +37,7 @@ export function LayoutSolarSystem() {
         {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
       </Button>
 
-      <div className="w-full h-screen bg-black">
+      <div className="w-full h-screen bg-[length:1500px_500px] bg-repeat bg-[url('/assets/background1.jpg')] ">
       <Canvas camera={{ position: isRocketMode ? [0, 0, 5] : [0, 20, 25], fov: 45, near: 0.1, far: 100000 }}>
       
         <Sun />
