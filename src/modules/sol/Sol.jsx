@@ -9,7 +9,7 @@ export function Sun() {
   // Rotate the sun along its own axis
   useFrame(() => {
     if (sunRef.current) {
-      sunRef.current.rotation.y += 0.01; // Adjust the rotation speed as needed
+      sunRef.current.rotation.z += 0.01; // Adjust the rotation speed as needed
     }
   });
 
