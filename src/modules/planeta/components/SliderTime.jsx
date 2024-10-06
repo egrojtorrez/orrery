@@ -3,6 +3,7 @@ import { useStoreSlider } from "../hooks/sliderCardStore";
 
 export function SliderTime() {
   const { setSpeed, speed } = useStoreSlider()
+  
   return (
     <Slider
       label="Speed"
@@ -11,7 +12,7 @@ export function SliderTime() {
       maxValue={24} 
       minValue={-24} 
       defaultValue={1}
-      value={speed}
+      value={speed.floor}
       getValue= {(value) => `${value} horas/s`}
       onChange={(value) => {
         setSpeed(value)

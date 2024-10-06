@@ -94,6 +94,7 @@ const planets = [
     eccentricity: 0.0489,
     inclination: 1.299,
     color: 0xFFA500,
+    rotationSpeed: 45583,
     comment: `Jupiter is the largest planet in our solar system. If Jupiter was a hollow shell, 1,000 Earths could fit inside. Jupiter also is the oldest planet, forming from the dust and gases left over from the Sun's formation 4.5 billion years ago. But it has the shortest day in the solar system, taking only 10.5 hours to spin around once on its axis.`
   },
   {
@@ -110,6 +111,7 @@ const planets = [
     eccentricity: 0.0565,
     inclination: 2.494,
     color: 0xFFFF00,
+    rotationSpeed: 36840,
     comment: `Saturn has the second-shortest day in the solar system. One day on Saturn takes only 10.7 hours (the time it takes for Saturn to rotate or spin around once), and Saturn makes a complete orbit around the Sun (a year in Saturnian time) in about 29.4 Earth years (10,756 Earth days).
     Its axis is tilted by 26.73 degrees with respect to its orbit around the Sun, which is similar to Earth's ;23.5-degree tilt. This means that, like Earth, Saturn experiences seasons.`
   },
@@ -127,6 +129,7 @@ const planets = [
     eccentricity: 0.046381,
     inclination: 0.8,
     color: 0x00FFFF,
+    rotationSpeed: 14794,
     comment: `Uranus is the only planet whose equator is nearly at a right angle to its orbit, with a tilt of 97.77 degrees. This may be the result of a collision with an Earth-sized object long ago. This unique tilt causes Uranus to have the most extreme seasons in the solar system. For nearly a quarter of each Uranian year, the Sun shines directly over each pole, plunging the other half of the planet into a 21-year-long, dark winter.`
   },
   {
@@ -143,6 +146,7 @@ const planets = [
     eccentricity: 0.009456,
     inclination: 1.8,
     color: 0x0000FF,
+    rotationSpeed: 9719,
     comment: `Neptune is one of two ice giants in the outer solar system (the other is Uranus). Most (80% or more) of the planet's mass is made up of a hot dense fluid of "icy" materials – water, methane, and ammonia – above a small, rocky core. Of the giant planets, Neptune is the densest.
               Scientists think there might be an ocean of super hot water under Neptune's cold clouds. It does not boil away because incredibly high pressure keeps it locked inside.`
   },
