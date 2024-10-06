@@ -1,7 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { Ecliptic } from "../orbita/Ecliptic";
-import { useStoreCard } from "./hooks/planetCardStore";
+import { useStoreCard, useStoreDataCard } from "./hooks/planetCardStore";
 import * as THREE from 'three';
 /* import { Satellite } from '../satellites/Satellite';
 import satelliteData from '../satellites/satelliteData'; */
@@ -9,6 +9,15 @@ import satelliteData from '../satellites/satelliteData'; */
 export function Planet({ planet, speed_factor=40 } ) {
   const planetRef = useRef();
   const {onOpen} = useStoreCard()
+  const {data, setData} = useStoreDataCard()
+  const onClick = () => {
+    console.log(data)
+    onOpen()
+    setData({
+      title: planet.name,
+      description: planet.comment
+    })
+  }
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime() * speed_factor;
@@ -46,7 +55,7 @@ export function Planet({ planet, speed_factor=40 } ) {
 
   return (
     <>
-      <mesh ref={planetRef}>
+      <mesh ref={planetRef} onClick={() => onClick()} >
         <sphereGeometry args={[planet.size, 32, 32]} />
         <meshStandardMaterial color={planet.color} />
       </mesh>

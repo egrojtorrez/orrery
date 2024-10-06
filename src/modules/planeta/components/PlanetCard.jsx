@@ -1,21 +1,19 @@
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
-import { useStoreCard } from "../hooks/planetCardStore";
+import { useStoreCard, useStoreDataCard } from "../hooks/planetCardStore";
 
 export function PlannetCard() {
   const {isOpen, onClose} = useStoreCard()
-
+  const {data} = useStoreDataCard()
   return (
     <>
       <Modal isOpen={isOpen} onOpenChange={onClose} backdrop='transparent' className='absolute right-0 top-0'>
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">{data.title}</ModalHeader>
               <ModalBody>
                 <p> 
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam pulvinar risus non risus hendrerit venenatis.
-                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
+                  {data.description}
                 </p>
               </ModalBody>
               <ModalFooter>
