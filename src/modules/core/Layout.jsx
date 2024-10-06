@@ -37,7 +37,7 @@ export function LayoutSolarSystem() {
       </Button>
 
       <div className="w-full h-screen bg-black">
-      <Canvas camera={{ position: isRocketMode ? [0, 0, 5] : [0, 20, 25], fov: 45 }}>
+      <Canvas camera={{ position: isRocketMode ? [0, 0, 5] : [0, 20, 25], fov: 45, near: 0.1, far: 100000 }}>
       
         <Sun />
         {planetData.map((planet) => (
