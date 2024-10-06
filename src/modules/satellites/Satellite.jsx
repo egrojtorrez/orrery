@@ -1,28 +1,26 @@
-import { useFrame } from "@react-three/fiber";
+/* import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { Ecliptic } from "../orbita/Ecliptic";
-/* import { Satellite } from '../satellites/Satellite';
-import satelliteData from '../satellites/satelliteData'; */
 
-export function Planet({ planet: { color, xRadius, zRadius, size } }) {
-  const planetRef = useRef();
+export function Satellite({ satellite: {planet, color, xRadius, zRadius, size} }) {
+  const SatelliteRef = useRef();
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime()/50;
     const x = xRadius * Math.sin(t);
     const z = zRadius * Math.cos(t);
-    planetRef.current.position.x = x;
-    planetRef.current.position.z = z;
-    planetRef.current.rotation.y += 0.01;
+    SatelliteRef.current.position.x = x;
+    SatelliteRef.current.position.z = z;
   });
 
   return (
     <>
-      <mesh ref={planetRef}>
+      <mesh ref={SatelliteRef}>
         <sphereGeometry args={[size, 32, 32]} />
         <meshStandardMaterial color={color} />
       </mesh>
+      
       <Ecliptic xRadius={xRadius} zRadius={zRadius} />
     </>
   );
-}
+} */

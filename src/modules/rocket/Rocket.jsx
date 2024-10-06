@@ -10,7 +10,7 @@ export function Rocket() {
   const [rotationY, setRotationY] = useState(0);
 
   const moveRocket = (event) => {
-    switch (event.key) {
+    switch (event.key) { 
       case "ArrowUp":
         // Move forward along the local X-axis
         if (rocketRef.current) {
