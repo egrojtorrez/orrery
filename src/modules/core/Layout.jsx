@@ -14,9 +14,14 @@ const NUM_ASTEROIDS = 10; // Number of asteroids
 
 export function LayoutSolarSystem() {
   const [isRocketMode, setIsRocketMode] = useState(false);
+  const [addAsteroids, setAddAsteroids] = useState(false);
 
   const toggleRocketMode = () => {
     setIsRocketMode((prevMode) => !prevMode); // Toggle the mode
+  };
+
+  const toggleAsteroids = () => {
+    setAddAsteroids((prevMode) => !prevMode); // Toggle the mode
   };
 
   return (
@@ -25,8 +30,16 @@ export function LayoutSolarSystem() {
       <Button onClick={toggleRocketMode} color="primary" className="absolute bottom-4 right-4 rounded z-10">
         {isRocketMode ? "Switch to Normal Mode" : "Activate Rocket Mode"}
       </Button>
+
+      
+
+      
+      <button onClick={toggleAsteroids}>
+        {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
+      </button>
       <div className="w-full h-screen bg-black">
-      <Canvas camera={{ position: isRocketMode ? [0, 0, 5] : [0, 20, 25], fov: 45 }} style={{ pointerEvents: 'auto' }}>
+      <Canvas camera={{ position: isRocketMode ? [0, 0, 5] : [0, 20, 25], fov: 45 }}>
+      
         <Sun />
         {planetData.map((planet) => (
           <Planet planet={planet} key={planet.id} />
@@ -34,7 +47,7 @@ export function LayoutSolarSystem() {
         <Lights />
         <OrbitControls />
         {isRocketMode && <Rocket/>}
-        {Array.from({ length: NUM_ASTEROIDS }).map((_, index) => (
+        {addAsteroids && (Array.from({ length: NUM_ASTEROIDS }).map((_, index) => (
         <Asteroid
           key={index}
           position={[
@@ -43,7 +56,7 @@ export function LayoutSolarSystem() {
             Math.random() * -50 // Random Z position
           ]}
         />
-      ))}
+      )))}
       </Canvas>
       </div>
     </>

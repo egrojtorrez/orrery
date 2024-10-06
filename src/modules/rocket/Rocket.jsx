@@ -8,7 +8,7 @@ export function Rocket() {
   const { scene } = useGLTF("/assets/rocket.glb");
 
   const moveRocket = (event) => {
-    switch (event.key) {
+    switch (event.key) { 
       case "ArrowUp":
         rocketRef.current.position.z -= 0.1; // Move forward
         break;
