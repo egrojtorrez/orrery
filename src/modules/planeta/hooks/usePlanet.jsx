@@ -3,11 +3,23 @@ import { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from 'three';
 import { eccentricToTrueAnomaly, meanToEccentricAnomaly } from "../utils/funcionesOrbita";
+import { useStoreCard, useStoreDataCard } from "./planetCardStore";
 
 export const usePlanet = (planetData) => {
   const { scene } = useGLTF(planetData.modelUrl);
-  const speed_factor = planetData.speed_factor ?? 11
+  const speed_factor = planetData.speed_factor ?? 40
   const planetRef = useRef();
+
+  const {onOpen} = useStoreCard()
+  const {setData} = useStoreDataCard()
+  
+  const onClick = () => {
+    onOpen()
+    setData({
+      title: planetData.name,
+      description: planetData.comment
+    })
+  }
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime() * speed_factor;
@@ -43,6 +55,5 @@ export const usePlanet = (planetData) => {
     planetRef.current.position.set(x, y, z);
     planetRef.current.rotation.y += 0.001;
   });
-
-  return { planetRef, scene };
+  return { planetRef, scene, onClick };
 }

@@ -9,13 +9,14 @@ import { OrbitControls } from "@react-three/drei";
 import { Asteroid } from '../asteroides/Asteroid'; // Import Asteroid component
 import { Rocket } from "../rocket/Rocket"; // Import Rocket component
 import {Button} from "@nextui-org/button";
+import { PlannetCard } from "@modules/planeta/components/PlanetCard";
+import { useStoreCard } from "@modules/planeta/hooks/planetCardStore";
 
 const NUM_ASTEROIDS = 10; // Number of asteroids
 
 export function LayoutSolarSystem() {
   const [isRocketMode, setIsRocketMode] = useState(false);
   const [addAsteroids, setAddAsteroids] = useState(false);
-
   const toggleRocketMode = () => {
     setIsRocketMode((prevMode) => !prevMode); // Toggle the mode
   };
@@ -26,11 +27,11 @@ export function LayoutSolarSystem() {
 
   return (
     <>
-
+      <PlannetCard/>
       <Button onClick={toggleRocketMode} color="primary" className="absolute bottom-4 right-4 rounded z-10">
         {isRocketMode ? "Switch to Normal Mode" : "Activate Rocket Mode"}
       </Button>
-      
+      {/* <Button onPress={onOpen} className="absolute bottom-4 right-1/2 rounded z-10">Open Modal</Button> */}
       <Button onClick={toggleAsteroids} color="primary" className="absolute bottom-4 left-4 rounded z-10">
         {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
       </Button>
