@@ -14,6 +14,7 @@ import { PlannetCard } from "@modules/planeta/components/PlanetCard";
 import { SliderTime } from "@modules/planeta/components/SliderTime";
 import { gsap } from "gsap";
 import { CamaraControl } from "@modules/camara/CamaraControl";
+import { Ecliptic } from '@modules/orbita/Ecliptic';
 
 const NUM_ASTEROIDS = 10;
 
@@ -44,6 +45,7 @@ function ZoomController({ zoomToSunRef, controlsRef }) {
 export function LayoutSolarSystem() {
   const [isRocketMode, setIsRocketMode] = useState(false);
   const [addAsteroids, setAddAsteroids] = useState(false);
+  const [paintEliptics, setEliptics] = useState(false);
   const zoomToSunRef = useRef(false); // Ref to track zoom state
   const controlsRef = useRef(); // Ref to store OrbitControls
 
@@ -53,6 +55,10 @@ export function LayoutSolarSystem() {
 
   const toggleAsteroids = () => {
     setAddAsteroids((prevMode) => !prevMode);
+  };
+
+  const toggleEliptics = () => {
+    setEliptics((prevMode) => !prevMode);
   };
 
   const triggerZoomToSun = () => {
@@ -65,16 +71,21 @@ export function LayoutSolarSystem() {
       <Button onClick={toggleRocketMode} color="primary" className="absolute bottom-4 right-4 rounded z-10">
         {isRocketMode ? "Switch to Normal Mode" : "Activate Rocket Mode"}
       </Button>
+
+      <Button onClick={toggleEliptics} color="primary" className="absolute bottom-16 left-4 rounded z-10">
+        {paintEliptics ? "Turn off eliptics" : "Activate eliptics"}
+      </Button>
+
       <SliderTime />
       <Button onClick={toggleAsteroids} color="primary" className="absolute bottom-4 left-4 rounded z-10">
         {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
       </Button>
 
-      <Button onClick={triggerZoomToSun} color="secondary" className="absolute bottom-16 left-4 rounded z-10">
+      <Button onClick={triggerZoomToSun} color="secondary" className="absolute bottom-16 right-4 rounded z-10">
         Zoom to Sun
       </Button>
 
-      <div className="w-full h-screen bg-[length:1500px_1000px] bg-repeat bg-[url('/assets/background1.jpg')] ">
+      <div className="w-full h-screen bg-[length:1500px_1000px] bg-repeat bg-[url('/assets/background2.jpg')] ">
       <Canvas camera={{ position: isRocketMode ? [0, 0, 5] : [0, 20, 25], fov: 45, near: 0.1, far: 100000 }}>
 
       <ZoomController zoomToSunRef={zoomToSunRef} controlsRef={controlsRef} />
@@ -82,11 +93,11 @@ export function LayoutSolarSystem() {
 
         <Sun />
         {planetData.map((planet) => (
-          <Planet planet={planet} key={planet.id} />
+          <Planet planet={planet} ecliptic={paintEliptics} key={planet.id} />
         ))}
 
         {smallObjectsData.map((smallObjects) => (
-          <SmallObjects smallObjects={smallObjects} key={smallObjects.id} />
+          <SmallObjects smallObjects={smallObjects} ecliptic={paintEliptics} key={smallObjects.id} />
         ))}
         
         <Lights />

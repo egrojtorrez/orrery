@@ -3,7 +3,7 @@ import { useSmallObjects } from "./hooks/useSmallObjects";
 /* import { Satellite } from '../satellites/Satellite';
 import satelliteData from '../satellites/satelliteData'; */
 
-export function SmallObjects({ smallObjects }) {
+export function SmallObjects({ smallObjects, ecliptic }) {
     const { smallObjectsRef } = useSmallObjects(smallObjects);
     return (
         <>
@@ -12,7 +12,7 @@ export function SmallObjects({ smallObjects }) {
                 <meshStandardMaterial color={smallObjects.color} />
             </mesh>
             {/* <primitive ref={smallObjectsRef} scale={[smallObjects.size*0.005, smallObjects.size*0.005, smallObjects.size*0.005]}/> */}
-            <Ecliptic planeta={smallObjects}/>
+            {ecliptic && <Ecliptic planeta={smallObjects}/>}
         </>
     ); 
 }
