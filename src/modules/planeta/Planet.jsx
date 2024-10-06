@@ -11,6 +11,7 @@ export function Planet({ planet: { color, xRadius, zRadius, size } }) {
     const z = zRadius * Math.cos(t);
     planetRef.current.position.x = x;
     planetRef.current.position.z = z;
+    planetRef.current.rotation.y += 0.01;
   });
 
   return (
