@@ -1,8 +1,19 @@
+import { useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { useRef } from "react";
+
 export function Sun() {
+  const { scene } = useGLTF("/assets/sol.glb");
+  const sunRef = useRef();
+
+  // Rotate the sun along its own axis
+  useFrame(() => {
+    if (sunRef.current) {
+      sunRef.current.rotation.y += 0.01; // Adjust the rotation speed as needed
+    }
+  });
+
   return (
-    <mesh>
-      <sphereGeometry args={[2.5, 32, 32]} />
-      <meshStandardMaterial color="#E1DC59" />
-    </mesh>
+    <primitive ref={sunRef} object={scene} scale={[0.005, 0.005, 0.005]} />
   );
 }
