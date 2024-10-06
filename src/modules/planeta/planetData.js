@@ -9,16 +9,16 @@ const planets = [
   {
     id: 1,
     name: "Mercury",
-    xRadius: 0.39,
-    zRadius: 0.39,
+    xRadius: 0.387098,
+    zRadius: 0.387098,
     size: 0.024394,
-    argPerigee: 77.46,
+    argPerigee: 77.45645,
     sidereal: 0.240846,
-    meanAnomoly: 252.25,
-    raan: 48.33167,
-    semiMajorAxis: 0.38709893,
-    eccentricity: 0.20563069,
-    inclination: 7.00487,
+    meanAnomoly: 29.124,
+    raan: 48.331,
+    semiMajorAxis: 0.387098,
+    eccentricity: 0.20563,
+    inclination: 7,
     color: 0xFF0000,
     rotationSpeed: 10.8,
     comment: `Mercury is the fastest planet in our solar system – traveling through space at nearly 29 miles (47 kilometers) per second. The closer a planet is to the Sun, the faster it travels. Since Mercury is the fastest planet and has the shortest distance to travel around the Sun, it has the shortest year of all the planets in our solar system – 88 days. `
@@ -26,16 +26,16 @@ const planets = [
   {
     id: 2,
     name: "Venus",
-    xRadius: 0.72,
-    zRadius: 0.72,
+    xRadius: 0.723332,
+    zRadius: 0.723332,
     size: 0.060518,
-    argPerigee: 131.77,
+    argPerigee: 131.53298,
     sidereal: 0.615,
-    meanAnomoly: 181.98,
-    raan: 76.68069,
-    semiMajorAxis: 0.72333199,
-    eccentricity: 0.00677323,
-    inclination: 3.39471,
+    meanAnomoly: 54.884,
+    raan: 76.68,
+    semiMajorAxis: 0.723332,
+    eccentricity: 0.006772,
+    inclination: 3.4,
     color: 0xFFFFFF,
     rotationSpeed: 6.5,
 
@@ -48,13 +48,13 @@ const planets = [
     xRadius: 1,
     zRadius: 1,
     size: 0.063710084,
-    argPerigee: 100.47,
+    argPerigee: 102.94719,
     sidereal: 1,
-    meanAnomoly: 100.47,
+    meanAnomoly: 114.20783,
     raan: -11.26064,
-    semiMajorAxis: 1.00000011,
-    eccentricity: 0.01671022,
-    inclination: 0.00005,
+    semiMajorAxis: 1,
+    eccentricity: 0.016708,
+    inclination: 0,
     color: 0x0066FF,
     rotationSpeed: 1574,
 
@@ -64,16 +64,16 @@ const planets = [
   {
     id: 4,
     name: "Mars",
-    xRadius: 1.52,
-    zRadius: 1.52,
+    xRadius: 1.523679,
+    zRadius: 1.523679,
     size: 0.033895,
-    argPerigee: 336.04084084,
+    argPerigee: 336.04084,
     sidereal: 0.881,
-    meanAnomoly: 355.43,
-    raan: 49.57854,
-    semiMajorAxis: 1.5236623,
-    eccentricity: 0.09341233,
-    inclination: 1.85061,
+    meanAnomoly: 286.502,
+    raan: 49.558,
+    semiMajorAxis: 1.523679,
+    eccentricity: 0.0934,
+    inclination: 1.852,
     color: 0xCC3333,
     rotationSpeed: 866,
 
@@ -83,19 +83,17 @@ const planets = [
   {
     id: 5,
     name: "Jupiter",
-    xRadius: 1.88,
-    zRadius: 1.88,
+    xRadius: 5.2044,
+    zRadius: 5.2044,
     size: 0.69911,
     argPerigee: 14.75385,
-    sidereal: 11.8618,
-    meanAnomoly: 0,
+    sidereal: 4.33259,
+    meanAnomoly: 273.867,
     raan: 100.464,
     semiMajorAxis: 5.2044,
     eccentricity: 0.0489,
     inclination: 1.299,
-    color: 0xD4B8A3,
-    rotationSpeed: 45583,
-
+    color: 0xFFA500,
     comment: `Jupiter is the largest planet in our solar system. If Jupiter was a hollow shell, 1,000 Earths could fit inside. Jupiter also is the oldest planet, forming from the dust and gases left over from the Sun's formation 4.5 billion years ago. But it has the shortest day in the solar system, taking only 10.5 hours to spin around once on its axis.`
   },
   {
@@ -112,43 +110,39 @@ const planets = [
     eccentricity: 0.0565,
     inclination: 2.494,
     color: 0xFFFF00,
-    rotationSpeed: 36840,
-
     comment: `Saturn has the second-shortest day in the solar system. One day on Saturn takes only 10.7 hours (the time it takes for Saturn to rotate or spin around once), and Saturn makes a complete orbit around the Sun (a year in Saturnian time) in about 29.4 Earth years (10,756 Earth days).
     Its axis is tilted by 26.73 degrees with respect to its orbit around the Sun, which is similar to Earth's ;23.5-degree tilt. This means that, like Earth, Saturn experiences seasons.`
   },
   {
     id: 7,
     name: "Uranus",
-    xRadius: 1.69, // Average radius in relation to Earth
-    zRadius: 1.69, // Average radius in relation to Earth
-    size: 0.25362, // Relative size compared to Earth
-    argPerigee: 174.96, // Argument of perigee
-    sidereal: 84.01, // Uranus' sidereal period in Earth years
-    meanAnomoly: 0, // Can be set to 0 or a specific value at a reference time
-    raan: 74.0, // Right Ascension of the Ascending Node
-    semiMajorAxis: 19.181, // Semi-major axis in astronomical units (AU)
-    eccentricity: 0.046, // Eccentricity of Uranus's orbit
-    inclination: 0.77, // Inclination in degrees
-    color: 0x4DA6E0, // Light blue color to represent Uranus
-    rotationSpeed: 14794,
+    xRadius: 19.2184,
+    zRadius: 19.2184,
+    size: 0.25362,
+    argPerigee: 170.96424,
+    sidereal: 30.6885,
+    meanAnomoly: 96.998857,
+    raan: 74.006,
+    semiMajorAxis: 19.2184,
+    eccentricity: 0.046381,
+    inclination: 0.8,
+    color: 0x00FFFF,
     comment: `Uranus is the only planet whose equator is nearly at a right angle to its orbit, with a tilt of 97.77 degrees. This may be the result of a collision with an Earth-sized object long ago. This unique tilt causes Uranus to have the most extreme seasons in the solar system. For nearly a quarter of each Uranian year, the Sun shines directly over each pole, plunging the other half of the planet into a 21-year-long, dark winter.`
   },
   {
     id: 8,
     name: "Neptune",
-    xRadius: 1.5, // Average radius in relation to Earth
-    zRadius: 1.5, // Average radius in relation to Earth
-    size: 0.24622, // Relative size compared to Earth
-    argPerigee: 130.00, // Argument of perigee
-    sidereal: 164.79, // Neptune's sidereal period in Earth years
-    meanAnomoly: 0, // Can be set to 0 or a specific value at a reference time
-    raan: 131.79, // Right Ascension of the Ascending Node
-    semiMajorAxis: 30.070, // Semi-major axis in astronomical units (AU)
-    eccentricity: 0.009, // Eccentricity of Neptune's orbit
-    inclination: 1.77, // Inclination in degrees
-    color: 0x4B0082, // Deep blue color to represent Neptune
-    rotationSpeed: 9719,
+    xRadius: 30.110387,
+    zRadius: 30.110387,
+    size: 0.24622,
+    argPerigee: 44.97135,
+    sidereal: 60.182,
+    meanAnomoly: 276.336,
+    raan: 131.784,
+    semiMajorAxis: 30.110387,
+    eccentricity: 0.009456,
+    inclination: 1.8,
+    color: 0x0000FF,
     comment: `Neptune is one of two ice giants in the outer solar system (the other is Uranus). Most (80% or more) of the planet's mass is made up of a hot dense fluid of "icy" materials – water, methane, and ammonia – above a small, rocky core. Of the giant planets, Neptune is the densest.
               Scientists think there might be an ocean of super hot water under Neptune's cold clouds. It does not boil away because incredibly high pressure keeps it locked inside.`
   },

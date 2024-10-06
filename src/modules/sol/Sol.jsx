@@ -14,7 +14,7 @@ export function Sun() {
     if (sunRef.current) {
       sunRef.current.rotation.x = 90;
       sunRef.current.rotation.z = 0;
-      sunRef.current.rotation.y += 0.001*speed;
+      sunRef.current.rotation.z += 0.001*speed;
     }
   });
 
