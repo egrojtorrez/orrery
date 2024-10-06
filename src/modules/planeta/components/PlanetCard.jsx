@@ -6,7 +6,7 @@ export function PlannetCard() {
   const {data} = useStoreDataCard()
   return (
     <>
-      <Modal isOpen={isOpen} onOpenChange={onClose} backdrop='transparent' className='absolute right-0 top-0'>
+      <Modal isOpen={isOpen} onOpenChange={onClose} backdrop='transparent' className='dark text-white absolute right-0 top-0'>
         <ModalContent>
           {(onClose) => (
             <>
@@ -17,11 +17,8 @@ export function PlannetCard() {
                 </p>
               </ModalBody>
               <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
+                <Button color="danger" variant="light" classname="dark" onPress={onClose}>
                   Close
-                </Button>
-                <Button color="primary" onPress={onClose}>
-                  Action
                 </Button>
               </ModalFooter>
             </>
