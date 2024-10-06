@@ -5,13 +5,12 @@ import { Sun } from "@modules/sol/Sol";
 import { Planet } from "@modules/planeta/Planet";
 import { Lights } from "@modules/luces/Lights";
 import planetData from "@modules/planeta/planetData";
-import { OrbitControls } from "@react-three/drei";
 import { Asteroid } from '../asteroides/Asteroid'; // Import Asteroid component
 import { Rocket } from "../rocket/Rocket"; // Import Rocket component
 import {Button} from "@nextui-org/button";
 import { PlannetCard } from "@modules/planeta/components/PlanetCard";
-import { useStoreCard } from "@modules/planeta/hooks/planetCardStore";
 import { SliderTime } from "@modules/planeta/components/SliderTime";
+import { CamaraControl } from "@modules/camara/CamaraControl";
 
 const NUM_ASTEROIDS = 10; // Number of asteroids
 
@@ -45,7 +44,7 @@ export function LayoutSolarSystem() {
           <Planet planet={planet} key={planet.id} />
         ))}
         <Lights />
-        <OrbitControls />
+        <CamaraControl/>
         {isRocketMode && <Rocket/>}
         {addAsteroids && (Array.from({ length: NUM_ASTEROIDS }).map((_, index) => (
         <Asteroid
