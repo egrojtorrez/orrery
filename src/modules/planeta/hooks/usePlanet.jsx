@@ -58,7 +58,7 @@ export const usePlanet = (planetData) => {
     planetRef.current.rotation.x = 90;
     planetRef.current.rotation.z = 0;
 
-    planetRef.current.rotation.y += 0.01; // Adjust the rotation speed as needed
+    planetRef.current.rotation.y += (planetData.rotationSpeed/100 * speed) / 3600; // Adjust the rotation speed as needed
   });
   return { planetRef, scene, onClick };
 }
