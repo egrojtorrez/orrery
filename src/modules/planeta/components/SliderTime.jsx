@@ -8,12 +8,13 @@ export function SliderTime() {
     <Slider
       label="Speed"
       color="foreground"
-      step={1} 
+      step={0.01} 
       maxValue={24} 
       minValue={-24} 
       defaultValue={1}
+      fillOffset={0}
       value={speed.floor}
-      getValue= {(value) => `${value} hours/s`}
+      getValue= {(value) => `${Math.round(value)} hours/s`}
       onChange={(value) => {
         setSpeed(value)
       }}
