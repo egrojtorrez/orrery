@@ -87,7 +87,8 @@ Earth sometimes temporarily hosts orbiting asteroids or large rocks. They are ty
     semiMajorAxis: 5.2044,
     eccentricity: 0.0489,
     inclination: 1.299,
-    color: 0xD4B8A3 
+    color: 0xD4B8A3,
+    comment: `Jupiter is the largest planet in our solar system. If Jupiter was a hollow shell, 1,000 Earths could fit inside. Jupiter also is the oldest planet, forming from the dust and gases left over from the Sun's formation 4.5 billion years ago. But it has the shortest day in the solar system, taking only 10.5 hours to spin around once on its axis.`
   },
   {
     id: 6,
@@ -102,7 +103,8 @@ Earth sometimes temporarily hosts orbiting asteroids or large rocks. They are ty
     semiMajorAxis: 19.181, // Semi-major axis in astronomical units (AU)
     eccentricity: 0.046, // Eccentricity of Uranus's orbit
     inclination: 0.77, // Inclination in degrees
-    color: 0x4DA6E0 // Light blue color to represent Uranus
+    color: 0x4DA6E0, // Light blue color to represent Uranus
+    comment: `Uranus is the only planet whose equator is nearly at a right angle to its orbit, with a tilt of 97.77 degrees. This may be the result of a collision with an Earth-sized object long ago. This unique tilt causes Uranus to have the most extreme seasons in the solar system. For nearly a quarter of each Uranian year, the Sun shines directly over each pole, plunging the other half of the planet into a 21-year-long, dark winter.`
   },
   {
     id: 7,
@@ -117,23 +119,25 @@ Earth sometimes temporarily hosts orbiting asteroids or large rocks. They are ty
     semiMajorAxis: 30.070, // Semi-major axis in astronomical units (AU)
     eccentricity: 0.009, // Eccentricity of Neptune's orbit
     inclination: 1.77, // Inclination in degrees
-    color: 0x4B0082 // Deep blue color to represent Neptune
+    color: 0x4B0082, // Deep blue color to represent Neptune
+    comment: `Neptune is one of two ice giants in the outer solar system (the other is Uranus). Most (80% or more) of the planet's mass is made up of a hot dense fluid of "icy" materials – water, methane, and ammonia – above a small, rocky core. Of the giant planets, Neptune is the densest.
+              Scientists think there might be an ocean of super hot water under Neptune's cold clouds. It does not boil away because incredibly high pressure keeps it locked inside.`
   },
-  {
-    id: 9,
-    name: "Pluto",
-    xRadius: 0.18, // Average radius in relation to Earth
-    zRadius: 0.18, // Average radius in relation to Earth
-    size: 0.00218, // Relative size compared to Earth
-    argPerigee: 113.29, // Argument of perigee
-    sidereal: 248.00, // Pluto's sidereal period in Earth years
-    meanAnomoly: 14.80, // Mean anomaly in degrees (approximate value at a reference time)
-    raan: 110.29, // Right Ascension of the Ascending Node
-    semiMajorAxis: 39.482, // Semi-major axis in astronomical units (AU)
-    eccentricity: 0.248, // Eccentricity of Pluto's orbit
-    inclination: 17.14, // Inclination in degrees
-    color: 0xC2B280 // Color to represent Pluto (light brownish hue)
-  }
+  // {
+  //   id: 9,
+  //   name: "Pluto",
+  //   xRadius: 0.18, // Average radius in relation to Earth
+  //   zRadius: 0.18, // Average radius in relation to Earth
+  //   size: 0.00218, // Relative size compared to Earth
+  //   argPerigee: 113.29, // Argument of perigee
+  //   sidereal: 248.00, // Pluto's sidereal period in Earth years
+  //   meanAnomoly: 14.80, // Mean anomaly in degrees (approximate value at a reference time)
+  //   raan: 110.29, // Right Ascension of the Ascending Node
+  //   semiMajorAxis: 39.482, // Semi-major axis in astronomical units (AU)
+  //   eccentricity: 0.248, // Eccentricity of Pluto's orbit
+  //   inclination: 17.14, // Inclination in degrees
+  //   color: 0xC2B280 // Color to represent Pluto (light brownish hue)
+  // }
 ];
 const totalPlanets = 4;
 const models = [
