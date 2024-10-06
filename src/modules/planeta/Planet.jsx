@@ -1,6 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { Ecliptic } from "@modules/orbita/Ecliptic";
+import { Ecliptic } from "../orbita/Ecliptic";
 /* import { Satellite } from '../satellites/Satellite';
 import satelliteData from '../satellites/satelliteData'; */
 

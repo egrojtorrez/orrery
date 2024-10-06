@@ -30,13 +30,11 @@ export function LayoutSolarSystem() {
       <Button onClick={toggleRocketMode} color="primary" className="absolute bottom-4 right-4 rounded z-10">
         {isRocketMode ? "Switch to Normal Mode" : "Activate Rocket Mode"}
       </Button>
-
       
-
-      
-      <button onClick={toggleAsteroids}>
+      <Button onClick={toggleAsteroids} color="primary" className="absolute bottom-4 left-4 rounded z-10">
         {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
-      </button>
+      </Button>
+
       <div className="w-full h-screen bg-black">
       <Canvas camera={{ position: isRocketMode ? [0, 0, 5] : [0, 20, 25], fov: 45 }}>
       
