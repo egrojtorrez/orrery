@@ -8,7 +8,7 @@ import planetData from "@modules/planeta/planetData";
 import { OrbitControls } from "@react-three/drei";
 import { Asteroid } from '../asteroides/Asteroid'; // Import Asteroid component
 import { Rocket } from "../rocket/Rocket"; // Import Rocket component
-import './styles.css'
+import {Button} from "@nextui-org/button";
 
 const NUM_ASTEROIDS = 10; // Number of asteroids
 
@@ -27,15 +27,17 @@ export function LayoutSolarSystem() {
   return (
     <>
 
-      <button onClick={toggleRocketMode}>
+      <Button onClick={toggleRocketMode} color="primary" className="absolute bottom-4 right-4 rounded z-10">
         {isRocketMode ? "Switch to Normal Mode" : "Activate Rocket Mode"}
-      </button>
-
-      <button onClick={toggleAsteroids}>
+      </Button>
+      
+      <Button onClick={toggleAsteroids} color="primary" className="absolute bottom-4 left-4 rounded z-10">
         {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
-      </button>
+      </Button>
 
+      <div className="w-full h-screen bg-black">
       <Canvas camera={{ position: isRocketMode ? [0, 0, 5] : [0, 20, 25], fov: 45, near: 0.1, far: 100000 }}>
+      
         <Sun />
         {planetData.map((planet) => (
           <Planet planet={planet} key={planet.id} />
@@ -54,6 +56,7 @@ export function LayoutSolarSystem() {
         />
       )))}
       </Canvas>
+      </div>
     </>
   );
 }
