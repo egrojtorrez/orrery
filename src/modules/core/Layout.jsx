@@ -35,7 +35,7 @@ export function LayoutSolarSystem() {
         {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
       </button>
 
-      <Canvas camera={{ position: isRocketMode ? [0, 0, 5] : [0, 20, 25], fov: 45 }}>
+      <Canvas camera={{ position: isRocketMode ? [0, 0, 5] : [0, 20, 25], fov: 45, near: 0.1, far: 100000 }}>
         <Sun />
         {planetData.map((planet) => (
           <Planet planet={planet} key={planet.id} />

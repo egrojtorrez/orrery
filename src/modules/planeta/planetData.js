@@ -3,7 +3,7 @@ const randomInt = (a, b) => Math.floor(random(a, b));
 const randomColor = () =>
   `rgb(${randomInt(180, 250)}, ${randomInt(180, 250)}, ${randomInt(180, 250)})`;
 
-const planetData = [
+const planets = [
   {
     "Planet": "Mercury",
     "Radius": 2439.4
@@ -37,16 +37,26 @@ const planetData = [
     "Radius": 24622
   }
 ];
-const totalPlanets = 8;
 
+const planetData = [];
+const totalPlanets = 8;
+const models = [
+  "/assets/mercurio.glb", 
+  "/assets/venus.glb",
+  "/assets/tierra.glb",
+  "/assets/marte.glb",
+  "/assets/jupiter.glb",
+  "/assets/saturno.glb",
+  "/assets/urano.glb",
+  "/assets/neptuno.glb",
+]
 for (let index = 0; index < totalPlanets; index++) {
   planetData.push({
     id: index,
-    color: randomColor(),
-    xRadius: (index + 1.5) * 60,
-    zRadius: (index + 1.5) * 45,
-    size: planetData[index]["Radius"]/(500*(index+1))
-    
+    xRadius: (index + 1.5) * 600,
+    zRadius: (index + 1.5) * 450,
+    size: planets[index]["Radius"]/(2000*(index+1)),
+    modelUrl: models[index], 
   });
 }
 
