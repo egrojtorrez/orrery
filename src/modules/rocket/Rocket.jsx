@@ -1,25 +1,29 @@
-// src/modules/rocket/Rocket.js
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
+import * as THREE from "three"; // Make sure to import THREE
 
 export function Rocket() {
   const rocketRef = useRef();
   const { scene } = useGLTF("/assets/rocket.glb");
 
+  const [rotationY, setRotationY] = useState(0);
+
   const moveRocket = (event) => {
     switch (event.key) { 
       case "ArrowUp":
-        rocketRef.current.position.z -= 0.1; // Move forward
+        // Move forward along the local X-axis
+        if (rocketRef.current) {
+          const direction = new THREE.Vector3(); // Create a vector for direction
+          rocketRef.current.getWorldDirection(direction); // Get the direction the rocket is facing
+          rocketRef.current.position.add(direction.multiplyScalar(0.1)); // Move forward
+        }
         break;
       case "ArrowLeft":
-        rocketRef.current.position.x -= 0.1; // Move left
+        setRotationY((prev) => prev + 0.1); // Rotate left
         break;
       case "ArrowRight":
-        rocketRef.current.position.x += 0.1; // Move right
-        break;
-      case "ArrowDown":
-        rocketRef.current.position.z += 0.1; // Move right
+        setRotationY((prev) => prev - 0.1); // Rotate right
         break;
       default:
         break;
@@ -33,10 +37,15 @@ export function Rocket() {
     };
   }, []);
 
-const fixedPosition = [10, 5, 10];
+  useFrame(() => {
+    if (rocketRef.current) {
+      rocketRef.current.rotation.y = rotationY; // Apply the Y-axis rotation
+    }
+  });
 
-return (
-   <primitive ref={rocketRef} object={scene} position={fixedPosition} rotation={[Math.PI / 2, 4.7, Math.PI]} scale={[0.1, 0.1, 0.1]} />
-);
+  const fixedPosition = [10, 5, 10];
 
+  return (
+    <primitive ref={rocketRef} object={scene} position={fixedPosition} rotation={[4.7, 0, 0]} scale={[0.1, 0.1, 0.1]} />
+  );
 }
