@@ -5,6 +5,7 @@ import { Lights } from "../luces/Lights";
 import { OrbitControls } from "@react-three/drei";
 import planetData from "../planeta/planetData";
 import './styles.css'
+
 export function LayoutSolarSystem() {
   return (
     <>
