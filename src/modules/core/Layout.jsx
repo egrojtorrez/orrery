@@ -67,9 +67,6 @@ export function LayoutSolarSystem() {
               <Button onClick={toggleAsteroids} color="primary" className="w-full">
                 {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
               </Button>
-              <Button onClick={triggerZoomToSun} color="secondary" className="w-full">
-                Zoom to Sun
-              </Button>
               <Button onClick={toggleSize} color="secondary" className="w-full">
                 {isRealisticSize ? "Switch to Scaled Sizes" : "Switch to Realistic Sizes"}
               </Button>
@@ -88,9 +85,6 @@ export function LayoutSolarSystem() {
           </Button>
           <Button onClick={toggleAsteroids} color="primary" className="w-full">
             {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
-          </Button>
-          <Button onClick={triggerZoomToSun} color="secondary" className="w-full">
-            Zoom to Sun
           </Button>
           <Button onClick={toggleSize} color="secondary" className="w-full">
             {isRealisticSize ? "Switch to Scaled Sizes" : "Switch to Realistic Sizes"}
