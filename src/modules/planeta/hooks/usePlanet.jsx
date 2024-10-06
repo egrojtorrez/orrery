@@ -4,10 +4,12 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from 'three';
 import { eccentricToTrueAnomaly, meanToEccentricAnomaly } from "../utils/funcionesOrbita";
 import { useStoreCard, useStoreDataCard } from "./planetCardStore";
+import { useStoreSlider } from "./sliderCardStore";
 
 export const usePlanet = (planetData) => {
   const { scene } = useGLTF(planetData.modelUrl);
-  const speed_factor = planetData.speed_factor ?? 40
+  const { speed } = useStoreSlider() 
+  const speed_factor = planetData.speed_factor ?? speed ?? 40
   const planetRef = useRef();
 
   const {onOpen} = useStoreCard()
