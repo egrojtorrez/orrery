@@ -6,8 +6,7 @@ import * as THREE from 'three';
 /* import { Satellite } from '../satellites/Satellite';
 import satelliteData from '../satellites/satelliteData'; */
 
-export function Planet({ planet: {xRadius, zRadius, size, modelUrl, speed_factor=40 } }) {
-  
+export function Planet({ planet: {xRadius, zRadius, size, modelUrl, speed_factor=40, ...planet } }) {
   const { scene } = useGLTF(modelUrl);
   
   const planetRef = useRef();
@@ -49,9 +48,9 @@ export function Planet({ planet: {xRadius, zRadius, size, modelUrl, speed_factor
 
   return (
     <>
-      <primitive ref={planetRef} object={scene} scale={[size*0.05, size*0.05, size*0.05]} />
+      <primitive ref={planetRef} object={scene} scale={[size*0.005, size*0.005, size*0.005]} />
 
-      <Ecliptic xRadius={xRadius} zRadius={zRadius} />
+      <Ecliptic planeta={planet}/>
 
     </>
   );

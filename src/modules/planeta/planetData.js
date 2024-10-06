@@ -66,8 +66,6 @@ const planets = [
   },
   // Agrega más planetas aquí...
 ];
-
-const planetData = [];
 const totalPlanets = 4;
 const models = [
   "/assets/mercurio.glb", 
@@ -80,14 +78,19 @@ const models = [
   "/assets/neptuno.glb",
 ]
 
-for (let index = 0; index < totalPlanets; index++) {
-  planetData.push({
-    id: index,
-    xRadius: (index + 1.5) * 600,
-    zRadius: (index + 1.5) * 450,
-    size: planets[index]["Radius"]/(2000*(index+1)),
-    modelUrl: models[index], 
-  });
-}
+const planetData = planets.map((planet, index) => ({
+  ...planet,
+  modelUrl: models[index],
+}));
+
+// for (let index = 0; index < totalPlanets; index++) {
+//   planetData.push({
+//     id: index,
+//     xRadius: (index + 1.5) * 600,
+//     zRadius: (index + 1.5) * 450,
+//     size: planets[index]["Radius"]/(2000*(index+1)),
+//     modelUrl: models[index], 
+//   });
+// }
 
 export default planetData;

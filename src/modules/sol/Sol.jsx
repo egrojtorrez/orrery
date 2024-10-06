@@ -2,10 +2,6 @@ import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 
-import { useGLTF } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
-
 export function Sun() {
   const { scene } = useGLTF("/assets/sol.glb");
   const sunRef = useRef();
@@ -18,6 +14,6 @@ export function Sun() {
   });
 
   return (
-    <primitive ref={sunRef} object={scene} scale={[0.05, 0.05, 0.05]} />
+    <primitive ref={sunRef} object={scene} scale={[0.0005, 0.0005, 0.0005]} />
   );
 }
