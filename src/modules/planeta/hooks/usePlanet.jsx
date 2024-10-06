@@ -10,7 +10,7 @@ import { useCameraTarget } from "@modules/camara/hooks/useCameraTarget";
 export const usePlanet = (planetData) => {
   const { scene } = useGLTF(planetData.modelUrl);
   const { speed } = useStoreSlider() 
-  const {followObject} = useCameraTarget()
+  const {followObject, setZooming} = useCameraTarget()
   const speed_factor = planetData.speed_factor ?? speed ?? 40
   const planetRef = useRef();
 
@@ -19,6 +19,7 @@ export const usePlanet = (planetData) => {
   
   const onClick = () => {
     followObject(planetRef)
+    setZooming(true)
     onOpen()
     setData({
       title: planetData.name,
@@ -60,7 +61,7 @@ export const usePlanet = (planetData) => {
     planetRef.current.rotation.x = 90;
     planetRef.current.rotation.z = 0;
 
-    planetRef.current.rotation.y += 0.01; // Adjust the rotation speed as needed
+    planetRef.current.rotation.y += (planetData.rotationSpeed/100 * speed) / 3600; // Adjust the rotation speed as needed
   });
   return { planetRef, scene, onClick };
 }

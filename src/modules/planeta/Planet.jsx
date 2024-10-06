@@ -2,7 +2,7 @@ import { Ecliptic } from "../orbita/Ecliptic";
 import { usePlanet } from "./hooks/usePlanet";
 import useStore from "@modules/store/useStore"; // Import the store
 
-export function Planet({ planet }) {
+export function Planet({ planet, ecliptic}) {
   const { scene, planetRef, onClick } = usePlanet(planet);
   const { isRealisticSize } = useStore(); // Get the realistic size state
 
@@ -11,7 +11,7 @@ export function Planet({ planet }) {
   return (
     <>
       <primitive ref={planetRef} object={scene} scale={[scaleValue, scaleValue, scaleValue]} onClick={() => onClick()} />
-      <Ecliptic planeta={planet} />
+      {ecliptic && <Ecliptic planeta={planet}/>}
     </>
   ); 
 }

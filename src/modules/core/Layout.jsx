@@ -12,41 +12,19 @@ import { Rocket } from "../rocket/Rocket";
 import { Button } from "@nextui-org/button";
 import {Accordion, AccordionItem} from "@nextui-org/react";
 import { PlannetCard } from "@modules/planeta/components/PlanetCard";
-import { SliderTime } from "@modules/planeta/components/SliderTime";
-import { gsap } from "gsap";
+import { SliderTime } from "@modules/planeta/components/SliderTime"
 import { CamaraControl } from "@modules/camara/CamaraControl";
 import useStore from "../store/useStore";; // Adjust the import path based on your structure
+import { Ecliptic } from '@modules/orbita/Ecliptic';
+import { ZoomController } from "@modules/camara/components/ZoomController";
+import { useZoomSun } from "@modules/sol/hooks/useSun";
 
 const NUM_ASTEROIDS = 10;
-
-function ZoomController({ zoomToSunRef, controlsRef }) {
-  const { camera } = useThree();
-
-  useFrame(() => {
-    if (zoomToSunRef.current) {
-      gsap.to(camera.position, {
-        x: 0,
-        y: 1,
-        z: 1,
-        duration: 2,
-        onUpdate: () => {
-          camera.lookAt(0, 0, 0); // Assuming the Sun is at [0, 0, 0]
-          if (controlsRef.current) {
-            controlsRef.current.update(); // Update controls only if it's defined
-          }
-        },
-      });
-      zoomToSunRef.current = false; // Reset after zooming
-    }
-  });
-
-  return null;
-}
 
 export function LayoutSolarSystem() {
   const [isRocketMode, setIsRocketMode] = useState(false);
   const [addAsteroids, setAddAsteroids] = useState(false);
-  const zoomToSunRef = useRef(false); // Ref to track zoom state
+  const [paintEliptics, setEliptics] = useState(false);
   const controlsRef = useRef(); // Ref to store OrbitControls
  const { isRealisticSize, toggleSize } = useStore(); // Get the state and toggle function
  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
@@ -59,8 +37,9 @@ export function LayoutSolarSystem() {
     setAddAsteroids((prevMode) => !prevMode);
   };
 
-  const triggerZoomToSun = () => {
-    zoomToSunRef.current = true; // Trigger the zoom effect
+  const {onClick: SunClick} = useZoomSun()
+  const toggleEliptics = () => {
+    setEliptics((prevMode) => !prevMode);
   };
 
   useEffect(() => {
@@ -94,6 +73,12 @@ export function LayoutSolarSystem() {
               <Button onClick={toggleSize} color="secondary" className="w-full">
                 {isRealisticSize ? "Switch to Scaled Sizes" : "Switch to Realistic Sizes"}
               </Button>
+              <Button onClick={() => SunClick()} color="danger" variant="light" className="absolute top-4 left-4 rounded z-10">
+                Volver al Sol
+              </Button>
+              <Button onClick={toggleEliptics} color="primary" className="absolute bottom-16 left-4 rounded z-10">
+              {paintEliptics ? "Turn off eliptics" : "Activate eliptics"}
+            </Button>
             </AccordionItem>
           </Accordion>
         ) : (
@@ -110,25 +95,31 @@ export function LayoutSolarSystem() {
           <Button onClick={toggleSize} color="secondary" className="w-full">
             {isRealisticSize ? "Switch to Scaled Sizes" : "Switch to Realistic Sizes"}
           </Button>
+          <Button onClick={() => SunClick()} color="danger" variant="light" className="absolute top-4 left-4 rounded z-10">
+            Volver al Sol
+          </Button>
+          <Button onClick={toggleEliptics} color="primary" className="absolute bottom-16 left-4 rounded z-10">
+            {paintEliptics ? "Turn off eliptics" : "Activate eliptics"}
+          </Button>
         </div>
         )}
       </div>
       
       <SliderTime/>
 
-      <div className="w-full h-screen bg-[length:1500px_500px] bg-repeat bg-[url('/assets/background1.jpg')] ">
+      <div className="w-full h-screen bg-[length:1500px_1000px] bg-repeat bg-[url('/assets/background2.jpg')] ">
       <Canvas camera={{ position: isRocketMode ? [0, 0, 5] : [0, 20, 25], fov: 45, near: 0.1, far: 100000 }}>
 
-      <ZoomController zoomToSunRef={zoomToSunRef} controlsRef={controlsRef} />
+      <ZoomController controlsRef={controlsRef} />
         <OrbitControls ref={controlsRef} /> {/* Attach ref to OrbitControls */}
 
         <Sun />
         {planetData.map((planet) => (
-          <Planet planet={planet} key={planet.id} />
+          <Planet planet={planet} ecliptic={paintEliptics} key={planet.id} />
         ))}
 
         {smallObjectsData.map((smallObjects) => (
-          <SmallObjects smallObjects={smallObjects} key={smallObjects.id} />
+          <SmallObjects smallObjects={smallObjects} ecliptic={paintEliptics} key={smallObjects.id} />
         ))}
         
         <Lights />
