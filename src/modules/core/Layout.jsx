@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Sun } from "@modules/sol/Sol";
 import { Planet } from "@modules/planeta/Planet";
@@ -10,10 +10,12 @@ import { OrbitControls } from "@react-three/drei";
 import { Asteroid } from '../asteroides/Asteroid';
 import { Rocket } from "../rocket/Rocket";
 import { Button } from "@nextui-org/button";
+import {Accordion, AccordionItem} from "@nextui-org/react";
 import { PlannetCard } from "@modules/planeta/components/PlanetCard";
 import { SliderTime } from "@modules/planeta/components/SliderTime";
 import { gsap } from "gsap";
 import { CamaraControl } from "@modules/camara/CamaraControl";
+import useStore from "../store/useStore";; // Adjust the import path based on your structure
 
 const NUM_ASTEROIDS = 10;
 
@@ -46,6 +48,8 @@ export function LayoutSolarSystem() {
   const [addAsteroids, setAddAsteroids] = useState(false);
   const zoomToSunRef = useRef(false); // Ref to track zoom state
   const controlsRef = useRef(); // Ref to store OrbitControls
+ const { isRealisticSize, toggleSize } = useStore(); // Get the state and toggle function
+ const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
 
   const toggleRocketMode = () => {
     setIsRocketMode((prevMode) => !prevMode);
@@ -59,20 +63,58 @@ export function LayoutSolarSystem() {
     zoomToSunRef.current = true; // Trigger the zoom effect
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 900);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <PlannetCard />
-      <Button onClick={toggleRocketMode} color="primary" className="absolute bottom-4 right-4 rounded z-10">
-        {isRocketMode ? "Switch to Normal Mode" : "Activate Rocket Mode"}
-      </Button>
-      <SliderTime />
-      <Button onClick={toggleAsteroids} color="primary" className="absolute bottom-4 left-4 rounded z-10">
-        {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
-      </Button>
 
-      <Button onClick={triggerZoomToSun} color="secondary" className="absolute bottom-16 left-4 rounded z-10">
-        Zoom to Sun
-      </Button>
+      <div className="absolute top-4 left-4 z-10">
+        {isMobile ? (
+          <Accordion variant="splitted" css={{ w: "150px" }}> {/* Accordion width for mobile */}
+            <AccordionItem title="Controls">
+              <Button onClick={toggleRocketMode} color="primary" className="w-full">
+                {isRocketMode ? "Switch to Normal Mode" : "Activate Rocket Mode"}
+              </Button>
+              <Button onClick={toggleAsteroids} color="primary" className="w-full">
+                {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
+              </Button>
+              <Button onClick={triggerZoomToSun} color="secondary" className="w-full">
+                Zoom to Sun
+              </Button>
+              <Button onClick={toggleSize} color="secondary" className="w-full">
+                {isRealisticSize ? "Switch to Scaled Sizes" : "Switch to Realistic Sizes"}
+              </Button>
+            </AccordionItem>
+          </Accordion>
+        ) : (
+          <div className="flex flex-col gap-2"> {/* Flex container for buttons */}
+          <Button onClick={toggleRocketMode} color="primary" className="w-full">
+            {isRocketMode ? "Switch to Normal Mode" : "Activate Rocket Mode"}
+          </Button>
+          <Button onClick={toggleAsteroids} color="primary" className="w-full">
+            {addAsteroids ? "Turn off asteroids" : "Activate asteroids"}
+          </Button>
+          <Button onClick={triggerZoomToSun} color="secondary" className="w-full">
+            Zoom to Sun
+          </Button>
+          <Button onClick={toggleSize} color="secondary" className="w-full">
+            {isRealisticSize ? "Switch to Scaled Sizes" : "Switch to Realistic Sizes"}
+          </Button>
+        </div>
+        )}
+      </div>
+      
+      <SliderTime/>
 
       <div className="w-full h-screen bg-[length:1500px_500px] bg-repeat bg-[url('/assets/background1.jpg')] ">
       <Canvas camera={{ position: isRocketMode ? [0, 0, 5] : [0, 20, 25], fov: 45, near: 0.1, far: 100000 }}>
